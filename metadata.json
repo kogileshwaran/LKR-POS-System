@@ -1,0 +1,5 @@
+{
+  "name": "LKR POS System",
+  "description": "A modern, Sri Lankan cuisine focused Restaurant Management and Point-of-Sale system featuring real-time ordering, dashboard analytics, and multiple payment methods including QR code integration.",
+  "requestFramePermissions": []
+}
