@@ -56,7 +56,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ total, isOpen, onClose, onC
   const isSufficient = method === PaymentMethod.CASH ? (parseFloat(cashGiven || '0') >= total) : true;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center bg-black/60 backdrop-blur-sm p-0 md:p-4">
+    <div className="fixed inset-0 z-[70] flex items-end md:items-center justify-center bg-black/60 backdrop-blur-sm p-0 md:p-4">
       <div className="bg-white rounded-t-2xl md:rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh] md:max-h-[85vh] animate-slide-up-mobile md:animate-fade-in">
         
         {/* Header */}

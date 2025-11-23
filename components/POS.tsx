@@ -266,11 +266,11 @@ const POS: React.FC<POSProps> = ({ user, items, onPlaceOrder }) => {
         </div>
       </div>
 
-      {/* Floating Cart Button - Visible on Mobile and Tablet */}
+      {/* Floating Cart Button - Visible on Mobile and Tablet - Z-INDEX 55 to be above Bottom Nav (50) */}
       {!isCartOpen && cart.length > 0 && (
           <button 
             onClick={() => setIsCartOpen(true)} 
-            className="lg:hidden fixed bottom-[90px] right-4 bg-orange-600 text-white p-3.5 rounded-full shadow-xl shadow-orange-600/30 z-40 flex items-center gap-2 animate-bounce-subtle active:scale-90 transition-transform"
+            className="lg:hidden fixed bottom-[90px] right-4 bg-orange-600 text-white p-3.5 rounded-full shadow-xl shadow-orange-600/30 z-[55] flex items-center gap-2 animate-bounce-subtle active:scale-90 transition-transform"
           >
               <ShoppingBag size={24} />
               <span className="absolute -top-1 -right-1 bg-white text-orange-600 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-orange-600">
@@ -279,16 +279,16 @@ const POS: React.FC<POSProps> = ({ user, items, onPlaceOrder }) => {
           </button>
       )}
 
-      {/* Overlay Backdrop - Visible on Mobile and Tablet */}
+      {/* Overlay Backdrop - Visible on Mobile and Tablet - Z-INDEX 54 */}
       {isCartOpen && (
           <div 
-            className="lg:hidden fixed inset-0 bg-black/60 z-30 backdrop-blur-sm transition-opacity"
+            className="lg:hidden fixed inset-0 bg-black/60 z-[54] backdrop-blur-sm transition-opacity"
             onClick={() => setIsCartOpen(false)}
           />
       )}
 
-      {/* RIGHT: Cart Sidebar (Responsive Drawer on Mobile/Tablet) */}
-      <div className={`fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl flex flex-col z-40 transform transition-transform duration-300 ease-out lg:relative lg:translate-x-0 lg:z-0 ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      {/* RIGHT: Cart Sidebar (Responsive Drawer on Mobile/Tablet) - Z-INDEX 55 to cover Bottom Nav */}
+      <div className={`fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl flex flex-col z-[55] transform transition-transform duration-300 ease-out lg:relative lg:translate-x-0 lg:z-0 ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
          
          {/* Mobile/Tablet Header for Cart */}
          <div className="lg:hidden p-4 border-b bg-orange-600 text-white flex items-center justify-between shadow-md">
@@ -362,8 +362,11 @@ const POS: React.FC<POSProps> = ({ user, items, onPlaceOrder }) => {
              )}
          </div>
 
-         {/* Footer Totals */}
-         <div className="p-4 md:p-6 bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] pb-safe">
+         {/* Footer Totals - Add safe area padding */}
+         <div 
+            className="p-4 md:p-6 bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]"
+            style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
+         >
              <div className="space-y-3 mb-4 md:mb-6">
                  <div className="flex justify-between text-gray-500 text-sm">
                      <span className="font-medium">Subtotal</span>

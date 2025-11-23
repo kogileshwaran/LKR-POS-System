@@ -18,7 +18,7 @@ const ReceiptModal: React.FC<ReceiptModalProps> = ({ order, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm print:p-0 print:bg-white print:static print:block">
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 backdrop-blur-sm print:p-0 print:bg-white print:static print:block">
       <style>
         {`
           @media print {
