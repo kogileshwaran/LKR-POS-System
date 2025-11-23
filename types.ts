@@ -21,6 +21,7 @@ export interface MenuItem {
   image?: string;
   isVegetarian?: boolean;
   isVegan?: boolean;
+  available: boolean; // New field for Stock Management
 }
 
 export interface CartItem extends MenuItem {
