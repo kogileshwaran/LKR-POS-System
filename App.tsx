@@ -87,10 +87,10 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-gray-100">
+    <div className="flex h-[100dvh] w-screen overflow-hidden bg-gray-100">
       
-      {/* Desktop Sidebar Navigation - Hidden on Mobile */}
-      <div className="hidden md:flex w-20 bg-gray-900 flex-col items-center py-6 space-y-8 z-50 shadow-xl">
+      {/* Desktop Sidebar Navigation - Hidden on Mobile and Tablet (md) if necessary, but here we keep it for md and above */}
+      <div className="hidden md:flex w-20 bg-gray-900 flex-col items-center py-6 space-y-8 z-50 shadow-xl shrink-0">
           <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-orange-500/20 p-1">
              <img src={SHOP_LOGO} alt="Logo" className="w-full h-full object-contain" />
           </div>
@@ -117,8 +117,11 @@ const App: React.FC = () => {
           </button>
       </div>
 
-      {/* Mobile Bottom Navigation - Hidden on Desktop */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 z-50 flex justify-around items-center px-2 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)] pb-safe">
+      {/* Mobile Bottom Navigation - Hidden on Desktop (md+) */}
+      <div 
+        className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 z-50 flex justify-around items-center px-2 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.3)] safe-area-bottom"
+        style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}
+      >
            {!isKitchen && <NavItem view={View.POS} icon={ShoppingCart} label="POS" />}
            {isKitchen && <NavItem view={View.KITCHEN} icon={ChefHat} label="Kitchen" />}
            
@@ -141,7 +144,7 @@ const App: React.FC = () => {
       {/* Main Content Area */}
       <div className="flex-1 h-full relative overflow-hidden bg-gray-50 flex flex-col">
           {/* Content Wrapper with bottom padding for mobile nav */}
-          <div className="flex-1 overflow-hidden relative pb-[80px] md:pb-0">
+          <div className="flex-1 overflow-hidden relative pb-[80px] md:pb-0 h-full">
             {currentView === View.POS && (
                 <POS 
                     user={user} 
